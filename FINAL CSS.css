@@ -1,0 +1,293 @@
+/* =========================================
+   COMPLETE STYLE SHEET — FINAL CSS.css
+========================================= */
+
+/* ---------- GLOBAL ---------- */
+:root{
+  --bg:#0e0e0e;
+  --panel: rgba(0,0,0,0.45);
+  --accent:#FFD700; /* yellow */
+  --popupText:#ff8888;
+  --redDark:#B22222;
+  --font: 'Press Start 2P', cursive;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  overflow:hidden;
+  height:100vh;
+  font-family:var(--font);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:var(--bg);
+}
+
+/* ---------- SCREEN LAYOUT ---------- */
+.screen{
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;left:0;
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  transition:opacity .35s ease;
+}
+.screen.active{display:flex;}
+
+/* ---------- START SCREEN ---------- */
+#start-screen{
+  background:var(--bg);
+  text-align:center;
+}
+.header-container{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-bottom:22px;
+}
+.title{
+  font-size:2.8rem;
+  color:var(--accent);
+  margin:0;
+  letter-spacing:1px;
+}
+
+/* little pixel ribbon next to title */
+.pixel-ribbon{
+  width:34px;
+  height:54px;
+  background:var(--accent);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+  filter: drop-shadow(0 0 6px #ffeaa7);
+  transform:translateY(-6px);
+}
+
+.caption{
+  color:#ddd;
+  font-size:1rem;
+  margin-bottom:30px;
+}
+
+/* ---------- BUTTONS ---------- */
+.game-button{
+  font-family:var(--font);
+  background:#333;
+  color:white;
+  padding:18px 30px;
+  border:3px solid #fff;
+  cursor:pointer;
+  transition:all .15s ease;
+  margin:8px;
+  border-radius:12px;
+  letter-spacing:1px;
+}
+.game-button:hover{background:#fff;color:#333}
+.curved-button{border-radius:20px}
+
+/* ---------- GAME SCREEN — Pixel City Background ---------- */
+#game-container{
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  height:100%;
+  /* pixel-city composed of layered gradients for a pixel-art feel */
+  background-color:#141414;
+  background-image:
+    /* small window grid - top layer */
+    linear-gradient(#2f2f2f 2px, transparent 2px),
+    linear-gradient(90deg,#2f2f2f 2px, transparent 2px),
+
+    /* building silhouettes (tiled patterns) */
+    linear-gradient(#222 30%, #141414 30%),
+
+    /* large repeating building blocks for silhouette */
+    repeating-linear-gradient(90deg, #333, #333 24px, #2b2b2b 24px, #2b2b2b 48px);
+  background-size:
+    40px 40px,
+    40px 40px,
+    100% 40%,
+    96px 96px;
+  background-position:
+    0 0,
+    20px 20px,
+    0 100%,
+    0 50%;
+}
+
+/* scoreboard */
+#score-board{
+  position:absolute;
+  top:18px;
+  left:18px;
+  padding:10px 14px;
+  background:var(--panel);
+  color:#fff;
+  border-radius:10px;
+  font-size:0.95rem;
+}
+
+/* track area (ground) */
+#game-track{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:170px;
+  border-top:6px solid #444;
+}
+
+/* ---------- PLAYER — Larger human pixel sprite (CSS-only) ---------- */
+#player{
+  width:56px;
+  height:92px;
+  position:absolute;
+  bottom:5px;
+  left:70px;
+  image-rendering:pixelated;
+  transform-origin:center bottom;
+  will-change:transform,bottom;
+}
+
+/* the human-shaped pixel sprite using layered linear-gradients */
+#player::before{
+  content:"";
+  position:absolute;
+  width:56px;
+  height:92px;
+  image-rendering:pixelated;
+  background-repeat:no-repeat;
+
+  /* layers: head, eyes, hair, body, jacket, arms, left leg, right leg, shoe blocks */
+  background-image:
+    /* head skin */
+    linear-gradient(#ffdcb8,#ffdcb8),
+    /* eyes (two dark pixels combined) */
+    linear-gradient(#000,#000),
+    /* hair */
+    linear-gradient(#3a2b1f,#3a2b1f),
+    /* shirt */
+    linear-gradient(#4e8cff,#4e8cff),
+    /* jacket (dark outer) */
+    linear-gradient(#133a6b,#133a6b),
+    /* arms */
+    linear-gradient(#133a6b,#133a6b),
+    /* left leg */
+    linear-gradient(#222,#222),
+    /* right leg */
+    linear-gradient(#222,#222),
+    /* left shoe */
+    linear-gradient(#000,#000),
+    /* right shoe */
+    linear-gradient(#000,#000);
+
+  background-size:
+    42px 30px,  /* head */
+    10px 4px,   /* eyes */
+    42px 10px,  /* hair */
+    36px 32px,  /* shirt */
+    48px 36px,  /* jacket */
+    56px 12px,  /* arms */
+    14px 28px,  /* left leg */
+    14px 28px,  /* right leg */
+    14px 8px,   /* left shoe */
+    14px 8px;   /* right shoe */
+
+  background-position:
+    7px 0px,   /* head */
+    22px 14px, /* eyes */
+    7px 6px,   /* hair */
+    10px 36px, /* shirt */
+    4px 32px,  /* jacket */
+    0px 64px,  /* arms horizontal block */
+    13px 60px, /* left leg */
+    29px 60px, /* right leg */
+    12px 86px, /* left shoe */
+    30px 86px; /* right shoe */
+}
+
+/* small run/idle scale animation */
+#player.run {
+  animation: bob 0.45s steps(2) infinite;
+}
+@keyframes bob {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+/* ---------- OBSTACLES & COLLECTIBLES (LARGER) ---------- */
+.game-element{
+  position:absolute;
+  bottom:5px;
+  image-rendering:pixelated;
+  will-change:right,transform;
+}
+
+/* traffic cone */
+.traffic-cone{
+  width:36px;
+  height:52px;
+  background:
+    linear-gradient(#fff 0 24%, #ff7b00 24% 48%, #fff 48% 72%, #ff7b00 72% 100%);
+  border-bottom:10px solid #000;
+  border-radius:6px;
+  bottom:5px;
+}
+
+/* coin */
+.coin{
+  width:44px;
+  height:44px;
+  background-color:#FFD700;
+  border-radius:50%;
+  box-shadow: inset 0 0 0 8px #ffefa1;
+  bottom:95px; /* coins appear higher */
+}
+
+/* heart */
+.heart{
+  width:40px;
+  height:40px;
+  background-color:#FF3b3b;
+  transform: rotate(-45deg);
+  position:relative;
+  bottom:85px;
+}
+.heart::before,.heart::after{
+  content:"";
+  position:absolute;
+  width:40px;height:40px;background-color:#FF3b3b;border-radius:50%;
+}
+.heart::before{ top:-20px; left:0 }
+.heart::after{ left:20px; top:0 }
+
+/* ---------- POPUPS ---------- */
+.popup-overlay{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.75);
+  display:none;justify-content:center;align-items:center;z-index:200;
+}
+.popup-box{
+  background:rgba(255,255,255,0.12);
+  color:var(--popupText);
+  padding:34px;border-radius:18px;border:2px solid var(--popupText);
+  max-width:80%;text-align:center;line-height:1.6;font-size:.92rem;
+}
+.popup-instruction{ margin-top:18px;color:#ff4444;font-size:.78rem }
+
+#donation-link{ color:#ffecec;text-decoration:underline }
+
+/* ---------- GAME OVER ---------- */
+#game-over-screen{ background:var(--bg) }
+.game-over-title{ font-size:2.8rem;color:var(--redDark);margin-bottom:18px}
+.score-final{ color:#fff;font-size:1.2rem;margin-bottom:22px }
+
+/* ---------- CITATIONS ---------- */
+#citations-screen{ background:#141414;color:#fff;padding:36px;overflow:auto }
+.citation-header{ font-size:1.25rem;color:#ff6666;text-align:center;margin-bottom:16px }
+.citation-content p{ margin-bottom:16px; font-size:.9rem; line-height:1.6 }
+.citation-content strong{ color:#FF8888 }

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Charity For Chondrosarcoma — Game</title>
+
+  <!-- Press Start 2P font -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="FINAL CSS.css">
+</head>
+<body>
+
+  <!-- START SCREEN -->
+  <div id="start-screen" class="screen active" role="main" aria-label="Start screen">
+    <div class="header-container">
+      <h1 class="title">Charity For Chondrosarcoma</h1>
+      <div class="pixel-ribbon" aria-hidden="true" title="Chondrosarcoma awareness ribbon"></div>
+    </div>
+
+    <p class="caption">Learn & Donate — collect coins to see facts, collect hearts to open donation link</p>
+
+    <button id="start-button" class="game-button" aria-label="Start game">START GAME</button>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="game-container" class="screen" role="application" aria-label="Game screen">
+    <div id="score-board" aria-live="polite">Score: <span id="score">0</span></div>
+
+    <div id="game-track" aria-hidden="false">
+      <!-- Player -->
+      <div id="player" aria-label="Player character" role="img"></div>
+      <!-- dynamic game elements appear here -->
+    </div>
+  </div>
+
+  <!-- COIN FACT POPUP -->
+  <div id="fact-popup" class="popup-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="popup-box">
+      <p id="fact-content">Fact goes here</p>
+      <p class="popup-instruction">PRESS SPACE TO RESUME</p>
+    </div>
+  </div>
+
+  <!-- HEART (DONATION) POPUP -->
+  <div id="heart-popup" class="popup-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="popup-box">
+      <p>YOU FOUND A CHANCE TO HELP!</p>
+      <p>
+        <a id="donation-link" href="https://www.sarcomaalliance.org/donate-chondrosarcoma-research" target="_blank" rel="noopener noreferrer">
+          DONATE TO CHONDROSARCOMA RESEARCH
+        </a>
+      </p>
+      <p class="popup-instruction">PRESS SPACE TO RESUME</p>
+    </div>
+  </div>
+
+  <!-- GAME OVER SCREEN -->
+  <div id="game-over-screen" class="screen" role="dialog" aria-modal="true" aria-hidden="true">
+    <h1 class="game-over-title">GAME OVER!</h1>
+    <div class="score-final">Final Score: <span id="final-score">0</span></div>
+    <div>
+      <button id="works-cited-button" class="game-button curved-button">Works Cited</button>
+      <button id="restart-button" class="game-button">Restart Game</button>
+    </div>
+  </div>
+
+  <!-- CITATIONS / WORKS CITED SCREEN -->
+  <div id="citations-screen" class="screen" role="dialog" aria-modal="true" aria-hidden="true">
+    <h2 class="citation-header">WORKS CITED (AMA Format)</h2>
+    <div id="citation-list" class="citation-content" tabindex="0"></div>
+    <div style="margin-top:20px;">
+      <button id="close-citations-button" class="game-button">BACK TO GAME OVER</button>
+    </div>
+  </div>
+
+  <!-- Main JS -->
+  <script src="FINAL JAVA SCRIPT.js"></script>
+</body>
+</html>
