@@ -124,55 +124,109 @@ body{
 }
 
 /* -------- Pixel Player -------- */
-#player{
-  width:56px;
-  height:92px;
-  position:absolute;
-  bottom:5px;
-  left:70px;
-  image-rendering:pixelated;
+/* ---------- NEW PIXEL HUMAN CHARACTER (CSS ONLY) ---------- */
+#player {
+  position: absolute;
+  bottom: 5px;
+  left: 70px;
+  width: 64px;
+  height: 96px;
+  image-rendering: pixelated;
 }
-#player::before{
-  content:"";
-  position:absolute;
-  width:56px; height:92px;
-  image-rendering:pixelated;
-  
-  background-image:
-    linear-gradient(#ffdcb8,#ffdcb8), /* head */
-    linear-gradient(#000,#000),       /* eyes */
-    linear-gradient(#3a2b1f,#3a2b1f), /* hair */
-    linear-gradient(#4e8cff,#4e8cff), /* shirt */
-    linear-gradient(#133a6b,#133a6b), /* jacket */
-    linear-gradient(#133a6b,#133a6b), /* arms */
-    linear-gradient(#222,#222),       /* left leg */
-    linear-gradient(#222,#222),       /* right leg */
-    linear-gradient(#000,#000),       /* left shoe */
-    linear-gradient(#000,#000);       /* right shoe */
 
+/* Character built from small "pixel squares" arranged manually */
+#player::before {
+  content: "";
+  position: absolute;
+  width: 64px;
+  height: 96px;
+  image-rendering: pixelated;
+
+  /* pixel-art layers */
+  background-image:
+
+    /* Hair */
+    linear-gradient(#2c1b0f, #2c1b0f),
+    linear-gradient(#2c1b0f, #2c1b0f),
+    linear-gradient(#2c1b0f, #2c1b0f),
+
+    /* Face */
+    linear-gradient(#f4c9a3, #f4c9a3),
+    linear-gradient(#f4c9a3, #f4c9a3),
+    linear-gradient(#f4c9a3, #f4c9a3),
+
+    /* Eyes */
+    linear-gradient(#000, #000),
+    linear-gradient(#000, #000),
+
+    /* Neck */
+    linear-gradient(#f4c9a3, #f4c9a3),
+
+    /* Shirt */
+    linear-gradient(#3c7dff, #3c7dff),
+    linear-gradient(#3c7dff, #3c7dff),
+    linear-gradient(#3c7dff, #3c7dff),
+
+    /* Pants */
+    linear-gradient(#2b2b2b, #2b2b2b),
+    linear-gradient(#2b2b2b, #2b2b2b),
+
+    /* Shoes */
+    linear-gradient(#000, #000),
+    linear-gradient(#000, #000);
+
+  /* Each square's size is "pixelated" manually */
   background-size:
-    42px 30px,
-    10px 4px,
-    42px 10px,
-    36px 32px,
-    48px 36px,
-    56px 12px,
-    14px 28px,
-    14px 28px,
-    14px 8px,
-    14px 8px;
-  
+    40px 10px,  /* hair top */
+    48px 10px,  /* hair middle */
+    32px 6px,   /* hair lower */
+
+    38px 22px,  /* face left */
+    38px 22px,  /* face right */
+    48px 14px,  /* face bottom */
+
+    6px 6px,    /* left eye */
+    6px 6px,    /* right eye */
+
+    18px 8px,   /* neck */
+
+    50px 26px,  /* shirt upper */
+    50px 20px,  /* shirt middle */
+    40px 16px,  /* shirt lower */
+
+    20px 26px,  /* left leg */
+    20px 26px,  /* right leg */
+
+    22px 10px,  /* left shoe */
+    22px 10px;  /* right shoe */
+
   background-position:
-    7px 0px,
-    22px 14px,
-    7px 6px,
-    10px 36px,
-    4px 32px,
-    0px 64px,
-    13px 60px,
-    29px 60px,
-    12px 86px,
-    30px 86px;
+    12px 0px,   /* hair top */
+    8px 10px,   /* hair mid */
+    16px 20px,  /* hair low */
+
+    13px 26px,  /* face left */
+    13px 26px,  /* face right (overlaps intentionally) */
+    8px 42px,   /* face lower */
+
+    20px 32px,  /* left eye */
+    38px 32px,  /* right eye */
+
+    24px 54px,  /* neck */
+
+    8px 62px,   /* shirt upper */
+    8px 88px,   /* shirt mid */
+    12px 108px, /* shirt lower */
+
+    14px 124px, /* left leg */
+    30px 124px, /* right leg */
+
+    12px 150px, /* left shoe */
+    32px 150px; /* right shoe */
+}
+
+#player.run {
+  animation: bob 0.45s steps(2) infinite;
 }
 
 #player.run{ animation:bob .45s steps(2) infinite; }
