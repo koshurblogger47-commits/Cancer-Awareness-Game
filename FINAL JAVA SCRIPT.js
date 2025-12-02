@@ -46,7 +46,7 @@ let lastSpawns = [];
 
 /* ---------- FACTS + CITATIONS (unchanged) ---------- */
 const gameContent = {
-  donationURL: "https://www.sarcomaalliance.org/donate-chondrosarcoma-research",
+  donationURL: "https://sarcomaalliance.org/",
   facts: [
     {
       text: "Chondrosarcoma is the second most common primary malignant bone tumor.",
