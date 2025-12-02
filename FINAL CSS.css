@@ -123,7 +123,6 @@ body{
   border-top:6px solid #444;
 }
 
-/* -------- Pixel Player -------- */
 /* ---------- NEW PIXEL HUMAN CHARACTER (CSS ONLY) ---------- */
 #player {
   position: absolute;
@@ -223,6 +222,10 @@ body{
 
     12px 150px, /* left shoe */
     32px 150px; /* right shoe */
+}
+
+#player.run {
+  animation: bob 0.45s steps(2) infinite;
 }
 
 #player.run {
@@ -339,4 +342,5 @@ body{
   margin-bottom:18px;
   line-height:1.6;
 }
+
 
