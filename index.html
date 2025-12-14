@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+  />
+  <title>Charity For Chondrosarcoma — Game</title>
+
+  <!-- Pixel Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="FINAL CSS.css">
+</head>
+<body>
+
+  <!-- START SCREEN -->
+  <div id="start-screen" class="screen active">
+    <div class="header-container">
+      <h1 class="title">Charity For Chondrosarcoma</h1>
+      <div class="pixel-ribbon"></div>
+    </div>
+
+    <p class="caption">
+      Jump obstacles, collect coins to learn facts,
+      and hearts to donate 💙
+    </p>
+
+    <button id="start-button" class="game-button">START GAME</button>
+  </div>
+
+  <!-- GAME -->
+  <div id="game-container" class="screen">
+    <div id="score-board">Score: <span id="score">0</span></div>
+
+    <div id="game-track">
+      <div id="player"></div>
+    </div>
+  </div>
+
+  <!-- FACT POPUP -->
+  <div id="fact-popup" class="popup-overlay">
+    <div class="popup-box">
+      <p id="fact-content"></p>
+      <p class="popup-instruction">Tap or press SPACE to resume</p>
+    </div>
+  </div>
+
+  <!-- HEART POPUP -->
+  <div id="heart-popup" class="popup-overlay">
+    <div class="popup-box">
+      <p>YOU FOUND A CHANCE TO HELP!</p>
+      <a id="donation-link" target="_blank">DONATE</a>
+      <p class="popup-instruction">Tap or press SPACE to resume</p>
+    </div>
+  </div>
+
+  <!-- GAME OVER -->
+  <div id="game-over-screen" class="screen">
+    <h1 class="game-over-title">GAME OVER</h1>
+    <p class="score-final">Final Score: <span id="final-score">0</span></p>
+
+    <button id="works-cited-button" class="game-button">Works Cited</button>
+    <button id="restart-button" class="game-button">Restart</button>
+  </div>
+
+  <!-- CITATIONS -->
+  <div id="citations-screen" class="screen">
+    <h2 class="citation-header">WORKS CITED</h2>
+    <div id="citation-list" class="citation-content"></div>
+    <button id="close-citations-button" class="game-button">Back</button>
+  </div>
+
+  <!-- JS -->
+  <script src="FINAL JAVA SCRIPT.js"></script>
+</body>
+</html>
