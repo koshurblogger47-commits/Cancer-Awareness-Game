@@ -139,8 +139,8 @@ html,body{
 
 /* ---------- TRAFFIC CONES (FIXED SIZE) ---------- */
 .traffic-cone{
-  width:42px;
-  height:62px;
+  width:30px;
+  height: 50px;
   background:
     linear-gradient(
       #ffffff 0 18%,
